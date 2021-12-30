@@ -14,7 +14,7 @@ from object_detection.utils import ops as utils_ops
 from object_detection.utils import label_map_util
 from object_detection.utils import visualization_utils as viz_utils
 
-# 내 로컬에 설치된 레이블 파일을, 인덱스와 연결시킨다.
+# 내 '로컬'에 설치된 '레이블 파일'을, '인덱스'와 연결시킨다.
 PATH_TO_LABELS = 'C:\\Users\\ADMIN\\Documents\\tensorflow\\models\\research\\object_detection\\data\\mscoco_complete_label_map.pbtxt'
 category_index = label_map_util.create_category_index_from_labelmap(PATH_TO_LABELS)
 
@@ -28,18 +28,22 @@ print(category_index)
 # /20200711/efficientdet_d0_coco17_tpu-32.tar.gz
 
 # Download and extract model
+#함수 만들기 모델이름과 모델 날짜를 입력하면 :뒤의 결과가 실행된다
 def download_model(model_name, model_date):
     base_url = 'http://download.tensorflow.org/models/object_detection/tf2/'
-    model_file = model_name + '.tar.gz'
+    model_file = model_name + '.tar.gz'#문자열 합치기
+    #텐서플로우 의 라이브러리 케라스의 클래스 유틸즈 겟 파일 함수
     model_dir = tf.keras.utils.get_file(fname=model_name,
                                         origin=base_url + model_date + '/' + model_file,
                                         untar=True)
     return str(model_dir)
 
+
+#위의 함수를 가지고 와서 사용
 MODEL_DATE = '20200711'
 MODEL_NAME = 'centernet_hg104_1024x1024_coco17_tpu-32'
 PATH_TO_MODEL_DIR = download_model(MODEL_NAME, MODEL_DATE)
-
+#다음의 함수를 실
 def load_model(model_dir) :
     model_full_dir = model_dir + "/saved_model"
 
