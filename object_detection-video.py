@@ -142,7 +142,7 @@ else :
             save_inference(detection_model,frame,out)
             
             #동영상을 실시간으로 화면에서 디텍팅하는 것
-            #show_inference(detection_model, frame)
+            show_inference(detection_model, frame)
             end_time=time.time()
 
             print('연산에 걸린 시간',str(end_time-start_time))
